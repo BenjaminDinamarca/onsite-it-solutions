@@ -10,14 +10,14 @@ export function Hero() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                IT-hjelp hjemme og{" "}
+                IT tjenester i{" "}
                 <span className="bg-gradient-primary bg-clip-text text-transparent">
-                  nettside­bygging
+                  Telemark!
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Vi kommer til deg og løser alle IT-problemer. Fra trege PC-er til nettverk, 
-                rutere og nettsider. Personlig service til rimelige priser.
+                Vi kommer til deg i Porsgrunn, Skien og Bamble og løser alle IT-problemer. 
+                Fra trege PC-er til nettverk, rutere og nettsider. Personlig service til rimelige priser.
               </p>
             </div>
 

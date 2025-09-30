@@ -10,19 +10,28 @@ export function Header() {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="flex items-center space-x-2 hover:opacity-80 transition-opacity cursor-pointer"
         >
-          <img src={logoImage} alt="Onsite IT Logo" className="h-8 w-auto" />
+          <img src={logoImage} alt="Onsite IT Logo" className="h-12 w-auto rounded-lg" />
         </button>
         
         <nav className="hidden md:flex items-center space-x-6">
-          <a href="#tjenester" className="text-muted-foreground hover:text-foreground transition-colors">
+          <button 
+            onClick={() => document.getElementById('tjenester')?.scrollIntoView({ behavior: 'smooth' })}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
             Tjenester
-          </a>
-          <a href="#priser" className="text-muted-foreground hover:text-foreground transition-colors">
+          </button>
+          <button 
+            onClick={() => document.getElementById('priser')?.scrollIntoView({ behavior: 'smooth' })}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
             Priser
-          </a>
-          <a href="#kontakt" className="text-muted-foreground hover:text-foreground transition-colors">
+          </button>
+          <button 
+            onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
             Kontakt
-          </a>
+          </button>
         </nav>
 
         <div className="flex items-center space-x-2">
