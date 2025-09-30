@@ -37,10 +37,20 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="premium" size="lg" className="text-lg px-8">
+              <Button 
+                variant="premium" 
+                size="lg" 
+                className="text-lg px-8"
+                onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Bestill hjemmebesøk
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-8"
+                onClick={() => document.getElementById('tjenester')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Se alle tjenester
               </Button>
             </div>

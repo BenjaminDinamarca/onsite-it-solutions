@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Home, DollarSign, Users, Wrench, Shield, Clock } from "lucide-react";
+import { Home, DollarSign, Users, Wrench, Shield, Clock, ChevronDown } from "lucide-react";
 
 export function WhyChooseUs() {
   const benefits = [
@@ -74,19 +74,14 @@ export function WhyChooseUs() {
             Ta kontakt i dag for å høre mer og få et uforpliktende prisoverslag. 
             Vi hjelper deg med alle IT-utfordringer hjemme eller på kontoret.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="#kontakt" 
-              className="inline-flex items-center justify-center h-11 px-8 bg-accent text-accent-foreground rounded-md font-medium hover:bg-accent/90 transition-colors shadow-accent"
+          <div className="flex justify-center">
+            <button
+              onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-flex items-center justify-center h-12 w-12 bg-primary-foreground/20 text-primary-foreground rounded-full font-medium hover:bg-primary-foreground/30 transition-all duration-300 hover:scale-110"
+              aria-label="Scroll til kontakt"
             >
-              Kontakt oss nå
-            </a>
-            <a 
-              href="tel:+4712345678" 
-              className="inline-flex items-center justify-center h-11 px-8 bg-primary-foreground/20 text-primary-foreground rounded-md font-medium hover:bg-primary-foreground/30 transition-colors"
-            >
-              Ring direkte
-            </a>
+              <ChevronDown className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </div>

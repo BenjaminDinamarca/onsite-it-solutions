@@ -1,11 +1,14 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Home, Cpu, Globe, Wifi, Shield, Smartphone } from "lucide-react";
+import { Home, Cpu, Globe, Wifi, Shield, Smartphone, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 import homeServiceImage from "@/assets/home-service.jpg";
 import pcBuildingImage from "@/assets/pc-building.jpg";
 import webDevelopmentImage from "@/assets/web-development.jpg";
 
 export function Services() {
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+  
   const services = [
     {
       icon: Home,
@@ -19,7 +22,8 @@ export function Services() {
         "Smarttelefon og nettbrett-hjelp",
         "Sikkerhet og backup-løsninger",
         "E-postoppsett og brukerstøtte"
-      ]
+      ],
+      detailedDescription: "Vi tilbyr komplett IT-support direkte i hjemmet ditt. Våre erfarne teknikere kommer til deg og løser alle typer IT-problemer på stedet. Dette inkluderer grundig feilsøking av trege PC-er, virusfjerning, hastighetoptimalisering og installasjon av nødvendig programvare. Vi setter opp og konfigurerer skrivere, skannere og annet periferiutstyr slik at alt fungerer sømløst sammen. Trådløse nettverk optimaliseres for best mulig hastighet og rekkevidde, og vi hjelper med smarttelefoner og nettbrett inkludert synkronisering med skytjenester som Dropbox og Google Drive. Sikkerhet er viktig, derfor installerer vi antivirusprogram og setter opp automatiske backup-løsninger for å beskytte dine data."
     },
     {
       icon: Cpu,
@@ -33,7 +37,8 @@ export function Services() {
         "Optimalisert for ditt bruk",
         "Spill, kontorarbeid eller design",
         "Garantert kvalitet og ytelse"
-      ]
+      ],
+      detailedDescription: "Vi bygger skreddersydde PC-er som er perfekt tilpasset dine behov og ønsker. Du kan velge alle komponenter selv - hovedkort, prosessor, grafikkort, minne, lagring og kabinett. Vi hjelper deg med å finne den beste kombinasjonen av komponenter innenfor ditt budsjett. Du betaler kun innkjøpsprisen for delene plus eventuelle fraktkostnader, mens vi tar kr 1500,- for profesjonell montering og testing. Resultatet blir en kraftig og pålitelig PC som er optimalisert for ditt spesifikke bruk - enten det er gaming, kontorarbeid, grafisk design eller andre krevende oppgaver. Vi leverer gratis innenfor Bamble, Porsgrunn og Skien, eller sender trygt i posten."
     },
     {
       icon: Globe,
@@ -47,7 +52,8 @@ export function Services() {
         "Automatiserte booking-systemer",
         "Oppdatering av eksisterende sider",
         "Nettbutikker og komplekse løsninger"
-      ]
+      ],
+      detailedDescription: "Vi lager profesjonelle nettsider som gir ditt brand en sterk digital tilstedeværelse. Alle våre nettsider har moderne, responsivt design som ser fantastisk ut på alle enheter - mobil, tablet og desktop. Vi implementerer søkemotoroptimalisering (SEO) for å sikre at nettsiden din blir funnet av potensielle kunder. Med AI-chatboter kan vi automatisere kundesupport og timebestilling døgnet rundt, noe som sparer deg tid og gir kundene rask service. Vi kan også modernisere eksisterende nettsider med fresh design og nye funksjoner, eller bygge komplekse løsninger som nettbutikker med betalingssystemer. Kostnaden varierer basert på prosjektets omfang - ta kontakt for et skreddersydd prisoverslag."
     }
   ];
 
@@ -96,9 +102,31 @@ export function Services() {
                   ))}
                 </ul>
                 
-                <Button variant="outline" className="w-full mt-6">
-                  Les mer
+                <Button 
+                  variant="outline" 
+                  className="w-full mt-6"
+                  onClick={() => setExpandedService(expandedService === index ? null : index)}
+                >
+                  {expandedService === index ? (
+                    <>
+                      <ChevronUp className="w-4 h-4 mr-2" />
+                      Vis mindre
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="w-4 h-4 mr-2" />
+                      Les mer
+                    </>
+                  )}
                 </Button>
+                
+                {expandedService === index && (
+                  <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {service.detailedDescription}
+                    </p>
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
