@@ -4,8 +4,75 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export function Contact() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validering
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.service || !formData.message) {
+      toast({
+        title: "Mangler informasjon",
+        description: "Vennligst fyll ut alle feltene",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Melding sendt!",
+        description: "Vi har mottatt din henvendelse og tar kontakt snart.",
+      });
+
+      // Tilbakestill skjemaet
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error sending contact form:", error);
+      toast({
+        title: "Noe gikk galt",
+        description: "Kunne ikke sende meldingen. Prøv igjen senere.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="kontakt" className="py-16 lg:py-24 bg-gradient-subtle">
       <div className="container mx-auto px-4">
@@ -29,50 +96,92 @@ export function Contact() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName">Fornavn</Label>
-                  <Input id="firstName" placeholder="Ditt fornavn" />
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName">Fornavn</Label>
+                    <Input 
+                      id="firstName" 
+                      placeholder="Ditt fornavn" 
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="lastName">Etternavn</Label>
+                    <Input 
+                      id="lastName" 
+                      placeholder="Ditt etternavn"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
                 </div>
+                
                 <div className="space-y-2">
-                  <Label htmlFor="lastName">Etternavn</Label>
-                  <Input id="lastName" placeholder="Ditt etternavn" />
+                  <Label htmlFor="email">E-post</Label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="din@epost.no"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
                 </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="email">E-post</Label>
-                <Input id="email" type="email" placeholder="din@epost.no" />
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="phone">Telefon</Label>
-                <Input id="phone" type="tel" placeholder="+47 123 45 678" />
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="service">Type tjeneste</Label>
-                <select id="service" className="w-full h-10 px-3 py-2 bg-background border border-input rounded-md text-sm">
-                  <option value="">Velg tjeneste</option>
-                  <option value="home-visit">Hjemmebesøk - IT-problemer</option>
-                  <option value="pc-building">Skreddersydd PC-bygging</option>
-                  <option value="website">Nettsidebygging</option>
-                  <option value="other">Annet</option>
-                </select>
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="message">Beskrivelse av problem/ønske</Label>
-                <Textarea 
-                  id="message" 
-                  placeholder="Beskriv ditt IT-problem eller hva du ønsker hjelp til..." 
-                  rows={4}
-                />
-              </div>
-              
-              <Button variant="premium" className="w-full">
-                Send forespørsel
-              </Button>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Telefon</Label>
+                  <Input 
+                    id="phone" 
+                    type="tel" 
+                    placeholder="+47 123 45 678"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="service">Type tjeneste</Label>
+                  <select 
+                    id="service" 
+                    className="w-full h-10 px-3 py-2 bg-background border border-input rounded-md text-sm"
+                    value={formData.service}
+                    onChange={handleInputChange}
+                    required
+                  >
+                    <option value="">Velg tjeneste</option>
+                    <option value="home-visit">Hjemmebesøk - IT-problemer</option>
+                    <option value="pc-building">Skreddersydd PC-bygging</option>
+                    <option value="website">Nettsidebygging</option>
+                    <option value="other">Annet</option>
+                  </select>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="message">Beskrivelse av problem/ønske</Label>
+                  <Textarea 
+                    id="message" 
+                    placeholder="Beskriv ditt IT-problem eller hva du ønsker hjelp til..." 
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  variant="premium" 
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sender..." : "Send forespørsel"}
+                </Button>
+              </form>
             </CardContent>
           </Card>
 
