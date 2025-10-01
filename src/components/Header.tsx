@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Mail } from "lucide-react";
-import logoImage from "@/assets/onsite-it-logo.png";
+import { Phone, Mail, Laptop } from "lucide-react";
 
 export function Header() {
   return (
@@ -10,7 +9,8 @@ export function Header() {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="flex items-center space-x-2 hover:opacity-80 transition-opacity cursor-pointer"
         >
-          <img src={logoImage} alt="Onsite IT Logo" className="h-12 w-auto rounded-lg" />
+          <Laptop className="w-6 h-6 text-[#ff8c42]" />
+          <span className="text-xl font-bold text-foreground">Onsite IT</span>
         </button>
         
         <nav className="hidden md:flex items-center space-x-6">

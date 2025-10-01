@@ -87,7 +87,7 @@ export function Contact() {
                   <Phone className="w-5 h-5 text-primary" />
                   <div>
                     <p className="font-medium text-foreground">Telefon</p>
-                    <p className="text-muted-foreground">+47 123 45 678</p>
+                    <p className="text-muted-foreground">+47 48463520</p>
                   </div>
                 </div>
                 
@@ -103,7 +103,7 @@ export function Contact() {
                   <MapPin className="w-5 h-5 text-primary" />
                   <div>
                     <p className="font-medium text-foreground">Dekningsområde</p>
-                    <p className="text-muted-foreground">Oslo og omegn</p>
+                    <p className="text-muted-foreground">Bamble, Porsgrunn og Skien</p>
                   </div>
                 </div>
                 
@@ -111,8 +111,8 @@ export function Contact() {
                   <Clock className="w-5 h-5 text-primary" />
                   <div>
                     <p className="font-medium text-foreground">Åpningstider</p>
-                    <p className="text-muted-foreground">Man-Fre: 08:00-18:00</p>
-                    <p className="text-muted-foreground">Lør: 10:00-15:00</p>
+                    <p className="text-muted-foreground">Man-Fre: 16:00-21:00</p>
+                    <p className="text-muted-foreground">Lør: 09:00-21:00</p>
                   </div>
                 </div>
               </CardContent>
@@ -120,13 +120,13 @@ export function Contact() {
 
             <Card className="bg-accent-light border-accent/20">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-foreground mb-3">Rask respons garantert</h3>
+                <h3 className="font-semibold text-foreground mb-3">Lokal IT-ekspertise i Telemark</h3>
                 <p className="text-muted-foreground mb-4">
-                  Vi svarer på alle henvendelser innen 24 timer. For akutte problemer, 
-                  ring oss direkte for raskere hjelp.
+                  Med base i Telemark betjener vi hele området fra Bamble til Skien. 
+                  Vi kjenner lokalområdet godt og kommer raskt når du trenger oss.
                 </p>
                 <Button variant="accent" className="w-full">
-                  Ring for akutt hjelp
+                  Bestill hjemmebesøk nå
                 </Button>
               </CardContent>
             </Card>

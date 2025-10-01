@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Laptop } from "lucide-react";
 
 export function Footer() {
   return (
@@ -8,9 +8,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">IT</span>
-              </div>
+              <Laptop className="w-6 h-6 text-[#ff8c42]" />
               <h3 className="text-xl font-bold">Onsite IT</h3>
             </div>
             <p className="text-background/80 leading-relaxed">
@@ -38,7 +36,7 @@ export function Footer() {
             <div className="space-y-3 text-background/80">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+47 123 45 678</span>
+                <span>+47 48463520</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
@@ -46,14 +44,14 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>Oslo og omegn</span>
+                <span>Bamble, Porsgrunn og Skien</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
-          <p>&copy; 2024 Onsite IT. Alle rettigheter reservert.</p>
+          <p>&copy; 2025 Onsite IT. Alle rettigheter reservert.</p>
         </div>
       </div>
     </footer>

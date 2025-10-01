@@ -137,7 +137,7 @@ export function NewPricing() {
             </div>
             <h3 className="text-2xl font-bold text-foreground mb-2">Betalingsalternativer</h3>
             <p className="text-muted-foreground">
-              Vi mottar banköverföringer og Vipps
+              Vi mottar Vipps, bankoverføringer og kontant
             </p>
           </div>
         </div>
