@@ -40,7 +40,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span>kontakt@onsite-it.no</span>
+                <span>kontakt@onsiteit.no</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />

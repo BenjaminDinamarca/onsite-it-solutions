@@ -95,7 +95,7 @@ export function Contact() {
                   <Mail className="w-5 h-5 text-primary" />
                   <div>
                     <p className="font-medium text-foreground">E-post</p>
-                    <p className="text-muted-foreground">kontakt@onsite-it.no</p>
+                    <p className="text-muted-foreground">kontakt@onsiteit.no</p>
                   </div>
                 </div>
                 
