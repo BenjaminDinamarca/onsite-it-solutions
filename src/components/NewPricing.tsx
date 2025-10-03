@@ -8,9 +8,9 @@ export function NewPricing() {
       title: "Hjemmebesøk",
       description: "Personlig IT-hjelp hjemme hos deg",
       services: [
-        { name: "Lite oppdrag", duration: "≤ 1 time", price: "kr 300" },
-        { name: "Middels oppdrag", duration: "1-2 timer", price: "kr 400" },
-        { name: "Store oppdrag", duration: "> 2 timer", price: "kr 300/time" }
+        { name: "Lite oppdrag", duration: "≤ 1 time", price: "kr 299" },
+        { name: "Middels oppdrag", duration: "1-2 timer", price: "kr 399" },
+        { name: "Store oppdrag", duration: "> 2 timer", price: "kr 299/time" }
       ],
       includes: [
         "Feilsøking og reparasjon",
@@ -40,8 +40,8 @@ export function NewPricing() {
       title: "PC-bygging",
       description: "Skreddersydde gaming- og arbeids-PC-er",
       services: [
-        { name: "Gaming PC", price: "kr 1500", note: "monteringsgebyr" },
-        { name: "Arbets PC", price: "kr 1500", note: "monteringsgebyr" }
+        { name: "Gaming PC", price: "kr 1499", note: "monteringsgebyr" },
+        { name: "Arbets PC", price: "kr 1499", note: "monteringsgebyr" }
       ],
       delivery: "Gratis levering innenfor Bamble, Porsgrunn og Skien",
       shipping: "Kan sendes i posten mot fraktkostnad",
