@@ -55,6 +55,7 @@ const handler = async (req: Request): Promise<Response> => {
       body: JSON.stringify({
         from: "Onsite IT <kontakt@onsiteit.no>",
         to: ["kontakt@onsiteit.no"],
+        reply_to: formData.email,
         subject: `Ny henvendelse fra ${formData.firstName} ${formData.lastName}`,
         html: emailHtml,
       }),
